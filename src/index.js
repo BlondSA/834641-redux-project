@@ -1,23 +1,21 @@
 import { createStore } from "redux";
 
-const reducer = (state = 0, action) => {
+const reducer = (store = 0, action) => {
   switch (action.type) {
-    case "INC": {
-      return state + action.value;
-    }
-    case "DEC": {
-      return state - action.value;
-    }
-    case "RES": {
-      if (state === 0) {
-        return state;
+    case "INC":
+      return store + action.value;
+    case "DEC":
+      return store - action.value;
+    case "RES":
+      if (store === 0) {
+        return store;
       }
-      return (state = action.value);
-    }
+      return (store = action.value);
     default:
-      return state;
+      return store;
   }
 };
+
 const store = createStore(reducer);
 
 const inc = (value) => ({ type: "INC", value });
